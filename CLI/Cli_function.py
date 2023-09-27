@@ -3,6 +3,7 @@ import art
 import shutil as sh
 from CLI.ProjectFiles import FilesOct8
 import termcolor as color
+import json
     
 class ConfigUser:
     def __init__(self) -> None:
@@ -68,4 +69,16 @@ class CliFunctions:
                 color.cprint("Your Path local is empty","red")
                 print("\033[0;0m")
                 input(">..")
-
+        if("NEW PACK" == str(comands).upper()):
+            if(self.StartProject.Path !=""):
+                Packname = input("\033[0;32m  Name of your pack  for Oct8 >")
+                body= [{"Name":Packname}]
+                with open(self.StartProject.Path+"\\"+Packname+"_oct8.json","w") as file:
+                    json.dump(body,file,indent=2)
+                color.cprint("The pack was successfully created","red")
+                print("\033[0;0m")
+                input(">..")
+            else:
+                color.cprint("Your Path local is empty","red")
+                print("\033[0;0m")
+                input(">..")
