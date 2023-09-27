@@ -67,4 +67,5 @@ class CliFunctions:
             else:
                 color.cprint("Your Path local is empty","red")
                 print("\033[0;0m")
+                input(">..")
 
