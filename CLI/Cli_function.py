@@ -72,7 +72,7 @@ class CliFunctions:
         if("NEW PACK" == str(comands).upper()):
             if(self.StartProject.Path !=""):
                 Packname = input("\033[0;32m  Name of your pack  for Oct8 >")
-                body= [{"Name":Packname}]
+                body= [{"Name":Packname,"Pack":{"style":"","component":"</>","Prop":""}}]
                 with open(self.StartProject.Path+"\\"+Packname+"_oct8.json","w") as file:
                     json.dump(body,file,indent=2)
                 color.cprint("The pack was successfully created","red")
