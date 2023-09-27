@@ -9,6 +9,10 @@ class ConfigUser:
         self.Path = ""
         self.Projectname =""
         self.Activate = False
+
+    def SetProjectName(self,name):
+        self.ProjectName = name
+        return self.ProjectName
 class ComandBase(ConfigUser):
     def __init__(self,Comand) -> None:
         self.Comand = Comand
@@ -41,6 +45,12 @@ class CliFunctions:
             Path = input("\033[0;32m What Path your Project? > ")
             self.Bases_.Set_path(Path,self.StartProject)
 
+        if("SET PROJECT NAME" == str(comands).upper()):
+            name_project = input("\033[0;32m  Name of your project >")
+            self.StartProject.Projectname = name_project
+            color.cprint("Project name now is: "+self.StartProject.Projectname,"red")
+            input(">..")
+            print("\033[0;0m")
 
         if("NEW" == str(comands).upper()):
             if(self.StartProject.Path !=""):
@@ -49,7 +59,12 @@ class CliFunctions:
                 files = os.listdir(dir_path)
                 for n_files in files:
                     sh.copy2(os.path.join(dir_path,n_files),self.StartProject.Path)
+                color.cprint("You create Oct8 project in your directory: "+dir_path,"light_red")
+                if(self.StartProject.Projectname != ""):
+                    color.cprint("For you project: "+self.StartProject.Projectname,"light_red")
+                input(">..")
+                print("\033[0;0m")
             else:
                 color.cprint("Your Path local is empty","red")
-                input(">..")
+                print("\033[0;0m")
 
